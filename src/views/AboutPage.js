@@ -8,7 +8,7 @@ import BookDemo from "../components/Common/BookDemo"
 import Loading from '../components/Common/Loading'
 import { withStyles, createStyles} from "@material-ui/core/styles";
 import styles from "../assets/jss/views/aboutStyles"
-import {ABOUT_API, apihome} from '../utils/API'
+import {ABOUT_API, API_HOME} from '../utils/API'
 
 const useStyles= createStyles(styles)
 
@@ -43,7 +43,7 @@ class AboutPage extends Component {
           };
         if(isLoaded){
         //Convert relative URLs to absolute
-        const mainContent= pageContent.content.rendered.replace(/\/wp-content/g,`${apihome}wp-content`)
+        const mainContent= pageContent.content.rendered.replace(/\/wp-content/g,`${API_HOME}wp-content`)
         return(
             <div>
                 <Header imgUrl={headerImage} caption={pageContent.title.rendered} />

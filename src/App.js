@@ -4,7 +4,8 @@ import { createBrowserHistory } from "history";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import routes from "./utils/routes";
 
-axios.defaults.baseURL = 'Put API URL here'
+
+axios.defaults.baseURL = ''
 const hist = createBrowserHistory();
 
 export default ()=> (

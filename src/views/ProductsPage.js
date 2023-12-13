@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import Loading from '../components/Common/Loading'
 import { withStyles, createStyles} from "@material-ui/core/styles";
 import styles from "../assets/jss/views/productStyles"
-import {PRODUCTS_API, PRODUCTS_PAGE_API, apihome} from '../utils/API'
+import {PRODUCTS_API, PRODUCTS_PAGE_API, API_HOME} from '../utils/API'
 
 const useStyles= createStyles(styles)
 
@@ -39,7 +39,7 @@ const Devices= (props)=> {
                                         className={"d-inline-block col-xs-12 col-sm-6 col-md-4 mb-5 "+classes.product}>
                                     <div className={classes.productImage+" "+classes.imgRaised +" " +
                                                     classes.imgRounded + " " +classes.imgFluid}>
-                                        <img src={apihome+product._embedded['wp:featuredmedia'][0].source_url}
+                                        <img src={API_HOME+product._embedded['wp:featuredmedia'][0].source_url}
                                                 alt="featuredMedia"/>  
                                     </div> 
                                     <div dangerouslySetInnerHTML={{__html:product.content.rendered}}/>

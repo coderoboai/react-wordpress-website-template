@@ -1,56 +1,66 @@
-import React, { Component } from 'react'
+import React, { useState, useEffect } from 'react';
 import axios from 'axios'
 import * as moment from 'moment'
 import PropTypes from 'prop-types'
 import Loading from '../components/Common/Loading'
 import { withStyles, createStyles} from "@material-ui/core/styles";
 import styles from "../assets/jss/components/blogStyles"
-import {BLOG_API, apihome} from '../utils/API'
+import {BLOG_API, API_HOME} from '../utils/API'
 
 const useStyles= createStyles(styles)
 
-class SinglePostPage extends Component {
-    state ={
-            isLoaded: false,
-            post:[],
-        }; 
-
-    componentDidMount(){
-        const postid=this.props.location.search.replace('?','')
-        axios.get(BLOG_API+'/'+postid+'/?_embed')
-            .then(res=> this.setState({
-                post: res.data,
-                isLoaded:true
-            }))
-           .catch(err => console.log(err))
-    }
-
- 
-    render(){
-        const {post, isLoaded}= this.state;
-        const { classes } = this.props;
+const SinglePostPage = (props) => {
+    const { classes } = props;
+    const [state, setState] = useState({
+      isLoaded: false,
+      post: [],
+    });
+  
+    useEffect(() => {
+      const postid = props.location.search.replace('?', '');
+  
+      console.log('post id = ', postid);
+  
+      axios
+        .get(`?slug=${props.match.params.slug}&_embed`)
+        .then((res) =>
+          setState({
+            post: res.data[0],
+            isLoaded: true,
+          })
+        )
+        .catch((err) => console.log(err));
+    }, [props.location.search, props.match.params.slug]);
+  
+    const { post, isLoaded } = state;
+  
+    console.log(props.match.params.slug);
+    console.log(post);
+        
         if(isLoaded){
         //change relative urls to absolute    
-        const mainContent= post.content.rendered.replace(/\/wp-content/g,`${apihome}wp-content`)
+        const mainContent= post.content.rendered.replace(/\/wp-content/g,`${API_HOME}wp-content`)
         const author= post._embedded['author'][0].name
         //we set up a custom field for author photo because wordpress default was not working
-        const avatar= post._embedded['author'][0].acf.profilePhoto
+        //const avatar= post._embedded['author'][0].acf.profilePhoto
         return(
             <div>
                 <div className="section ">
                     <div className="container">
+                        <div className="pb-4 col-xs-12 col-sm-10 offset-sm-1">
                         <h2 dangerouslySetInnerHTML={{__html:post.title.rendered}}/>
                         <div className="d-flex mt-3">
-                            <div> 
-                                <img src={apihome+avatar} alt='author' 
+                            {/* <div> 
+                                <img src={API_HOME+avatar} alt='author' 
                                 className={
                                     classes.avatar+" "+
                                     classes.imgRoundedCircle}/>
-                            </div>
+                            </div> */}
                             <div>
                                 <strong>{author}</strong>
                                 <p className={classes.postMeta}>{moment(post.date).format('LL')}</p>
                             </div>
+                        </div>
                         </div>
                         <hr/>
                         <div className={classes.content+" justify-content-center"} 
@@ -66,7 +76,6 @@ class SinglePostPage extends Component {
             )
         }
     }
-}
 
 SinglePostPage.propTypes={
     classes: PropTypes.object.isRequired,

@@ -8,7 +8,8 @@ const blogStyles={
     ...imagesStyles,
     ...backgrounds,
     cardImage:{
-        height:"auto"
+        height:"100px",
+        width: "100px"
     },
     postMeta:{
         color:roseColor,
@@ -16,9 +17,10 @@ const blogStyles={
         fontWeight:"900"
     },
     avatar:{
-        width:"auto",
-        height:"60px",
-        marginRight:"1rem"
+        width: '100%',
+        height: '400px',
+        borderRadius: '8px', // Set this to a specific value for rounded corners
+        objectFit: 'cover',
     },
     content:{
         "& figure":{
@@ -26,10 +28,20 @@ const blogStyles={
             justifyContent:"center"
         },
         "& img":{
-            maxWidth:"60%",
+            maxWidth:"100%",
             height:"auto"
         }
-    }
+    },
+
+    cardExcerpt: {
+        height: 'auto', // Set the fixed height for the card
+        overflow: 'hidden',
+    },
+
+    cardExcerptInner: {
+        height: 'auto', // Ensure the inner content fills the available height
+        overflow: 'hidden', // Handle overflow within the inner content
+    },
 }
 
 export default blogStyles

@@ -8,7 +8,7 @@ import CustomDropdown from "../Common/CustomDropdown.js";
 import Button from "../Common/Button.js";
 import {homeUrl, aboutUrl, blogUrl, productsUrl} from '../../utils/routes'
 import styles from "../../assets/jss/components/navLinksStyle.js";
-//import { apihome } from "../../utils/API.js";
+//import { API_HOME } from "../../utils/API.js";
 
 const useStyles = makeStyles(styles);
 

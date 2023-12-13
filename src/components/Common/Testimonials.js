@@ -1,7 +1,7 @@
 import React, {useState, useEffect } from 'react'
 import axios from 'axios'
 import Carousel from "react-slick";
-import{TESTIMONIALS_API, apihome} from '../../utils/API'
+import{TESTIMONIALS_API, API_HOME} from '../../utils/API'
 import { makeStyles } from "@material-ui/core/styles";
 import styles from "../../assets/jss/components/carouselStyle";
 
@@ -42,7 +42,7 @@ export default function Testimonials () {
                     <div className='row'>
                         <div className='col-xs-12 col-md-2 mb-3'>
                             <img
-                                src={apihome+testimonial.acf.authorImage}
+                                src={API_HOME+testimonial.acf.authorImage}
                                 alt="..."
                                 className={
                                 classes.imgRaised +

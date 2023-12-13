@@ -7,7 +7,7 @@ import YouTube from 'react-youtube'
 import Loading from '../components/Common/Loading'
 import { withStyles, createStyles} from "@material-ui/core/styles";
 import styles from "../assets/jss/views/aboutStyles"
-import {HOME_API,apihome} from  '../utils/API'
+import {HOME_API,API_HOME} from  '../utils/API'
 
 const useStyles= createStyles(styles)
 
@@ -42,7 +42,7 @@ class HomePage extends Component {
       };
     if (isLoaded){
     //change relative URLs to Absolute
-    const mainContent= pageContent.content.rendered.replace(/\/wp-content/g,`${apihome}wp-content`)
+    const mainContent= pageContent.content.rendered.replace(/\/wp-content/g,`${API_HOME}wp-content`)
     return (
         //Page layout- Carousel->Intro->Youtube vide->Testimonials->Book Demo Form
         <div>

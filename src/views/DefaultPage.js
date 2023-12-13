@@ -3,7 +3,7 @@ import axios from 'axios'
 import Loading from '../components/Common/Loading'
 import Header from "../components/Header/Header"
 import BookDemo from "../components/Common/BookDemo"
-import {CAREERS_API,POLICY_API, apihome} from '../utils/API'
+import {CAREERS_API,POLICY_API, API_HOME} from '../utils/API'
 import {careerUrl, policyUrl} from '../utils/routes'
 
 const ServiceDefault=(props)=>{
@@ -30,12 +30,12 @@ const ServiceDefault=(props)=>{
     }, [url])
 
     if(isLoaded){
-        const mainContent= pageContent.content.rendered.replace(/\/wp-content/g,`${apihome}wp-content`)
+        const mainContent= pageContent.content.rendered.replace(/\/wp-content/g,`${API_HOME}wp-content`)
         return(
             //Assuming Advanced custom field plugin is used to create a header image for every page
             <div>
                 {(pageContent.acf.headerImage)&&(
-                <Header imgUrl={apihome+pageContent.acf.headerImage} caption={pageContent.title.rendered}/>
+                <Header imgUrl={API_HOME+pageContent.acf.headerImage} caption={pageContent.title.rendered}/>
                 )}
 
                 <div className={"main "+url}>

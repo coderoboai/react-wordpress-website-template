@@ -4,7 +4,7 @@
   "private": true,
   "description": "React Website Template",
   "homepage": ".",
-  "proxy": "Enter your API URL | Remove if API and Frontend are on same URL",
+  "proxy": "https://public-api.wordpress.com",
   "dependencies": {
     "@material-ui/core": "^4.10.2",
     "@material-ui/icons": "^4.9.1",
